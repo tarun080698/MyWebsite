@@ -1,29 +1,61 @@
-import React from "react";
-import { Menu } from "antd";
+import React, { useState } from "react";
+import { Anchor, Button, Drawer } from "antd";
+
+const { Link } = Anchor;
 
 function AppHeader() {
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
   return (
     <div className="container-fluid">
       <div className="header">
-              <div className="logo">
-              <a href="https://github.com" ><i className="fas fa-bolt"></i>
-                  <b>Tech</b></a>
-          </div>
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={["2"]}
-        style={{ lineHeight: "50px" }}
-      >
-        <Menu.Item key="home">Home</Menu.Item>
-        <Menu.Item key="about">About</Menu.Item>
-        <Menu.Item key="features">Features</Menu.Item>
-        <Menu.Item key="howitworks">How it Works</Menu.Item>
-        <Menu.Item key="faq">faq</Menu.Item>
-        <Menu.Item key="pricing">Pricing</Menu.Item>
-        <Menu.Item key="contact">Contact</Menu.Item>
-              </Menu>
-              </div>
+        <div className="logo">
+          <a href="https://www.linkedin.com/in/tarun-dadlani/">
+            <i className="fas fa-bolt"></i>
+            <b>Tech</b>
+          </a>
+        </div>
+        <div className="mobileHidden">
+          <Anchor targetOffset="65">
+            <Link href="#hero" title="Home" />
+            <Link href="#about" title="About" />
+            <Link href="#feature" title="Features" />
+            <Link href="#works" title="How it works" />
+            <Link href="#faq" title="FAQ" />
+            <Link href="#pricing" title="Pricing" />
+            <Link href="#contact" title="Contact Me" />
+          </Anchor>
+        </div>
+        <div className="mobileVisible">
+          <Button type="primary" onClick={showDrawer}>
+            <i className="fas fa-bars"></i>
+          </Button>
+          <Drawer
+            placement="right"
+            closable={false}
+            onClose={onClose}
+            visible={visible}
+          >
+            <Anchor targetOffset="65">
+              <Link href="#hero" title="Home" />
+              <Link href="#about" title="About" />
+              <Link href="#feature" title="Features" />
+              <Link href="#works" title="How it works" />
+              <Link href="#faq" title="FAQ" />
+              <Link href="#pricing" title="Pricing" />
+              <Link href="#contact" title="Contact Me" />
+            </Anchor>
+          </Drawer>
+        </div>
+      </div>
     </div>
   );
 }

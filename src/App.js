@@ -2,11 +2,11 @@ import React from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import AppHeader from "./Components/common/Header";
+import AppFooter from "./Components/common/Footer";
 import AppHome from "./views/Home";
 
-import { Layout} from "antd";
-const { Header, Content } = Layout;
-
+import { Layout } from "antd";
+const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
@@ -16,8 +16,11 @@ function App() {
           <AppHeader />
         </Header>
         <Content>
-          <AppHome/>
+          <AppHome />
         </Content>
+        <Footer>
+        <AppFooter/>
+        </Footer>
       </Layout>
     </div>
   );
